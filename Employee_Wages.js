@@ -29,11 +29,17 @@ function CalculateWages( n = generate2()){
     }
 }
 
+function CalMonthWage(){
+    for(let i=0;i<20;i++){
+        CalculateWages();
+    }
+}
+
 if(ans === 1){
    console.log("present"); 
-   CalculateWages();
-   console.log(`Total Wage for a Day : ${TotalWage}`);
-   console.log(`Total Hours for a Day : ${TtotalHr}`);
+   CalMonthWage();
+   console.log(`Total Wage for a Month ${TotalWage}`);
+   console.log(`Total Hours for a Month : ${TtotalHr}`);
 }else if(ans === 0){
    console.log("absent");
 }
