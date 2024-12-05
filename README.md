@@ -10,5 +10,7 @@ UC4 : Create a New function for calculating monthly Wage.
 ----------------------------------------------------------------
 UC5 : Create a new function for checking the condition wheather the given conditions are true or not.
 ----------------------------------------------------------------
-UC6 : Create a new function for Calculating Yearly Wages For One Employee
+UC6 : Create a new function for Calculating Yearly Wages For One Employee.
+----------------------------------------------------------------
+UC7 : Add New Feature for adding multiple employee .
 ----------------------------------------------------------------

@@ -1,15 +1,17 @@
 const prompt = require('prompt-sync')({sigint: true})
 
-let Person = prompt('Enter the No. of Person you want : ')
-let dummy = 1
-while(dummy <= Person){
-    const partHr = 4;
+const partHr = 4;
 const fullHr = 8;
 const PerHrWage = 20;
 let TotalWage = 0;
 let TtotalHr = 0;
-let ans = generate();
 let days = 1;
+let YearWage = 0;
+let yearHr = 0;
+let Iterator = 1;
+
+let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+let StoreData = new Map();
 
 function generate(){
     const num =  Math.floor(Math.random() * 2);
@@ -21,17 +23,25 @@ function generate2(){
     return num;
 }
 
+let NoOfEmp = prompt("Enter the number of Employees you want to create : ")
+
+while(NoOfEmp > 0){
+    let EmpName = prompt(`Enter Employee ${Iterator++} Name :`)
+    let Data = [];
+
 function CalculateWages( n = generate2()){
-    switch(n) {
-        case 0: return
-        case 1:
-            TotalWage += partHr * PerHrWage;
-            TtotalHr += partHr;
-            break;
-        case 2:
-            TotalWage += fullHr * PerHrWage;
-            TtotalHr += fullHr;
-            break;
+    if(generate() === 1){
+        switch(n) {
+            case 0: return
+            case 1:
+                TotalWage += partHr * PerHrWage;
+                TtotalHr += partHr;
+                break;
+            case 2:
+                TotalWage += fullHr * PerHrWage;
+                TtotalHr += fullHr;
+                break;
+        }
     }
 }
 
@@ -48,17 +58,28 @@ function CalConditionWage(){
     }
 }
 
-if(ans === 1){
-   console.log(`Person ${dummy} is Present`);
-   console.log(`Details of Person ${dummy} : `);
-    
-   CalConditionWage()
-   console.log("Limit Reached! Either No. of Days Exceed or No. of working Hours Exceeded ");
-   console.log(`Total Wage for a Month : ${TotalWage}`);
-   console.log(`Total Hours for a Month : ${TtotalHr}`);
-   console.log(`Total Days for a Month : ${days}`); 
-}else if(ans === 0){
-   console.log("absent");
+function Cal12MonthWage(){
+    for(let i=0;i<12;i++){
+        CalMonthWage();
+        YearWage += TotalWage;
+        yearHr += TtotalHr;
+        let object = {
+            month: month[i],
+            wage: TotalWage,
+            hour: TtotalHr
+        }
+        Data.push(object);
+        TtotalHr = 0
+        TotalWage = 0;
+    }   
 }
-    dummy++;
+
+Cal12MonthWage();
+StoreData.set(EmpName, Data);
+NoOfEmp--;
+console.log("Done!");
 }
+StoreData.forEach(function(value , key){
+    console.log(` Name: ${key} Value: ${value}`); 
+})
+
