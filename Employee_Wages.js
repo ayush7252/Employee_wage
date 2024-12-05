@@ -1,4 +1,9 @@
-const partHr = 4;
+const prompt = require('prompt-sync')({sigint: true})
+
+let Person = prompt('Enter the No. of Person you want : ')
+let dummy = 1
+while(dummy <= Person){
+    const partHr = 4;
 const fullHr = 8;
 const PerHrWage = 20;
 let TotalWage = 0;
@@ -44,7 +49,9 @@ function CalConditionWage(){
 }
 
 if(ans === 1){
-   console.log("present"); 
+   console.log(`Person ${dummy} is Present`);
+   console.log(`Details of Person ${dummy} : `);
+    
    CalConditionWage()
    console.log("Limit Reached! Either No. of Days Exceed or No. of working Hours Exceeded ");
    console.log(`Total Wage for a Month : ${TotalWage}`);
@@ -52,4 +59,6 @@ if(ans === 1){
    console.log(`Total Days for a Month : ${days}`); 
 }else if(ans === 0){
    console.log("absent");
+}
+    dummy++;
 }
