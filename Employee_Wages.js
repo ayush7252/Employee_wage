@@ -78,8 +78,15 @@ Cal12MonthWage();
 StoreData.set(EmpName, Data);
 NoOfEmp--;
 console.log("Done!");
-}
-StoreData.forEach(function(value , key){
-    console.log(` Name: ${key} Value: ${value}`); 
-})
 
+}
+let result = prompt("Do you Want details of Employees(Yes: print)(No: Not Print) : ")
+let r1 = result.toLowerCase();
+while(r1 === "yes"){
+    let user = prompt("Enter employee name :")
+    let data = StoreData.get(user);
+    console.log(`Employee Name : ${user}`);
+    console.log(data);
+    result = prompt("Do you want details of another Employee? (Yes: print, No: Not Print): ") 
+    r1 = result.toLowerCase();   
+}
